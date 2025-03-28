@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TayMe | Handmade Jewelry</title>
+  <meta name="description" content="Elegant handmade jewelry crafted with care, worn with love. Explore our collection and shop online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #64a6ff;
+      --secondary-color: #ff64a6;
+      --background-color: #f5f7ff;
+      --text-color: #333333;
+      --accent-color: #a6ff64;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .logo {
+      height: 50px;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+    
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+    
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1rem;
+      background-image: url('./assets/Photoroom.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      min-height: 80vh;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      color: white;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: white;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    section {
+      padding: 5rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .product-img {
+      height: 300px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .product-info {
+      padding: 1.5rem;
+    }
+    
+    .product-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .product-price {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .product-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .product-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4rem;
+    }
+    
+    .about-img {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-img img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .footer-logo {
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .footer-links a:hover {
+      opacity: 0.8;
+    }
+    
+    .tagline {
+      font-style: italic;
+      margin: 1rem 0;
+      letter-spacing: 1px;
+    }
+    
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-nav-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: 0;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        width: 0;
+        height: 100vh;
+        overflow: hidden;
+        flex-direction: column;
+        padding: 2rem 0;
+        transition: width 0.3s ease-in-out;
+      }
+      
+      .nav-links.active {
+        width: 70%;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="./assets/TayMe Full Logo .png" alt="TayMe Logo" class="logo">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://tayme.square.site/" target="_blank">Shop</a></li>
+      </ul>
+      <button class="mobile-nav-toggle">☰</button>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>TayMe Handmade Jewelry</h1>
+      <p>Hi beautiful! Discover our elegant jewelry pieces, crafted with care, worn with love.</p>
+      <a href="https://tayme.square.site/" class="cta-button" target="_blank">Shop Now</a>
+    </div>
+  </section>
+
+  <section id="products">
+    <h2 class="section-title">Featured Collections</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="./assets/Photoroom(1).jpg" alt="Necklace Collection" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Elegant Necklaces</h3>
+          <p>Beautiful handcrafted necklaces that add elegance to any outfit.</p>
+          <a href="https://tayme.square.site/" class="product-button" target="_blank">Shop Now</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="./assets/Photoroom(2).jpg" alt="Bracelet Collection" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Stunning Bracelets</h3>
+          <p>Delicate bracelets designed to complement your personal style.</p>
+          <a href="https://tayme.square.site/" class="product-button" target="_blank">Shop Now</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="./assets/Photoroom(3).jpg" alt="Earring Collection" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Charming Earrings</h3>
+          <p>Unique earrings that make a statement with every wear.</p>
+          <a href="https://tayme.square.site/" class="product-button" target="_blank">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="about-img">
+      <img src="./assets/Photoroom.jpg" alt="About TayMe">
+    </div>
+    <div class="about-content">
+      <h2>About TayMe</h2>
+      <p>TayMe is a passionate jewelry brand dedicated to creating beautiful, handcrafted pieces that celebrate individuality and style. Each piece is carefully designed and made with love, ensuring quality and uniqueness.</p>
+      <p>Our mission is to provide elegant, affordable jewelry that makes you feel special every day. We believe that jewelry should be an expression of your personality and enhance your natural beauty.</p>
+      <p>Every TayMe piece is crafted with care, worn with love.</p>
+      <a href="https://tayme.square.site/" class="product-button" target="_blank">Visit Our Store</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <img src="./assets/TayMe Full Logo .png" alt="TayMe Logo" class="footer-logo">
+      <p class="tagline">CRAFTED WITH CARE, WORN WITH LOVE</p>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://tayme.square.site/" target="_blank">Shop</a></li>
+      </ul>
+      <p>&copy; 2025 TayMe Handmade Jewelry. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
